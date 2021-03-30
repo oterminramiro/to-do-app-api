@@ -22,5 +22,7 @@ $router->group(['prefix' => 'api'], function() use ($router){
 		$router->get('index', ['uses' => 'CustomerController@index']);
 		$router->post('create', ['uses' => 'CustomerController@create']);
 		$router->post('login', ['uses' => 'CustomerController@login']);
+		$router->get('show', ['uses' => 'CustomerController@show']);
+		$router->post('edit', ['uses' => 'CustomerController@edit']);
 	});
 });
