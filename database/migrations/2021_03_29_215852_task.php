@@ -16,12 +16,17 @@ class Task extends Migration
         //
 		Schema::create('Task', function (Blueprint $table) {
 		    $table->id('IdTask');
+			$table->unsignedBigInteger('IdCustomer');
+			$table->foreign('IdCustomer')
+				  ->references('IdCustomer')
+				  ->on('Customer')
+				  ->onDelete('cascade');
 		    $table->string('Name')->nullable();
 		    $table->string('Description')->nullable();
-		    $table->string('Priority');
-		    $table->string('Color');
-			$table->boolean('Pinned');
-		    $table->boolean('Active');
+		    $table->string('Priority')->default(1);
+		    $table->string('Color')->default('#bfbfbf');
+			$table->boolean('Pinned')->default(0);
+		    $table->boolean('Active')->default(1);
 			$table->dateTime('Date', $precision = 0)->nullable();
 		    $table->uuid('Guid');
 		    $table->timestamps();

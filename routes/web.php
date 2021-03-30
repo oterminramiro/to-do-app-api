@@ -19,7 +19,6 @@ $router->get('/', function () use ($router) {
 
 $router->group(['prefix' => 'api'], function() use ($router){
 	$router->group(['prefix' => 'customers'], function() use ($router){
-		$router->get('index', ['uses' => 'CustomerController@index']);
 		$router->post('create', ['uses' => 'CustomerController@create']);
 		$router->post('login', ['uses' => 'CustomerController@login']);
 
@@ -34,6 +33,9 @@ $router->group(['prefix' => 'api'], function() use ($router){
 	});
 
 	$router->group(['prefix' => 'tasks', 'middleware' => 'token'], function() use ($router){
-		$router->get('index', ['uses' => 'TaskController@index']);
+		$router->post('create', ['uses' => 'TaskController@create']);
+		$router->get('list', ['uses' => 'TaskController@list']);
+		$router->post('edit', ['uses' => 'TaskController@edit']);
+		$router->post('delete', ['uses' => 'TaskController@delete']);
 	});
 });

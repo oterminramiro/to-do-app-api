@@ -7,17 +7,10 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use App\Models\Customer;
-use App\Models\Task;
 use \Firebase\JWT\JWT;
 
 class CustomerController extends Controller
 {
-	public function index()
-	{
-		//
-		die('ola');
-	}
-
 	public function create(Request $request)
 	{
 		try
