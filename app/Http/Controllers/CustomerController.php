@@ -96,9 +96,20 @@ class CustomerController extends Controller
 
 				return response(json_encode($response), 500)->header('Content-Type', 'application/json');
 			}
+
 			if($decrypted == $validation['password'])
 			{
 				$token = $this->_generateToken($Customer);
+			}
+			else
+			{
+				$response = array(
+					'success' => false,
+					'data' => 'Invalid password',
+					'code' => 404
+				);
+
+				return response(json_encode($response), 404)->header('Content-Type', 'application/json');
 			}
 
 			$Customer->Active = 1;
